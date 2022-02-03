@@ -3,6 +3,7 @@ package happy.comments.springcomments.web;
 import happy.comments.springcomments.TestInit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -13,9 +14,6 @@ public class HomeController {
 
     @RequestMapping
     public String home() {
-        testInit.saveMember();
-        testInit.saveItem();
-
         return "home";
     }
 }

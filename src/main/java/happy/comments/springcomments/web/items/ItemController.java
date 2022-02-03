@@ -1,4 +1,4 @@
-package happy.comments.springcomments.web.item;
+package happy.comments.springcomments.web.items;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,6 @@ public class ItemController {
 
     @RequestMapping("/{itemId}")
     public String itemDetail(@PathVariable Long itemId, Model model) {
-
         return "item/item-detail";
     }
 }

@@ -1,6 +1,6 @@
 package happy.comments.springcomments.repository;
 
-import happy.comments.springcomments.domain.Comment;
+import happy.comments.springcomments.domain.comment.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +14,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     @Override
     Optional<Comment> findById(Long aLong);
 
-    @Override
-    long count();
+//    long countByItem_id(Long item_id);
 }
