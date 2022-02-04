@@ -1,10 +1,15 @@
 package happy.comments.springcomments.domain.comment;
 
+import happy.comments.springcomments.domain.Member;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Temporal;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 @Entity
@@ -47,5 +52,9 @@ public class Comment implements CommentInterface{
     public void updateComment(String content) {
         this.content = content;
         this.updateDate = LocalDateTime.now();
+    }
+
+    public boolean checkMember(Long member_id) {
+        return Objects.equals(this.member_id, member_id);
     }
 }

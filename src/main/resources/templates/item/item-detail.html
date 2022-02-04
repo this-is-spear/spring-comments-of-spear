@@ -1,9 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>상품 조회</h2> </div>
+    상품명: <span th:text="${item.itemTitle}">상품명</span><br/>
+    댓글 작성하기
+    댓글 내용
+    <table>
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.showContent()}"></td>
+        <td></td>
+    </tr>
+    </table>
+</div>
 </body>
 </html>

@@ -21,17 +21,20 @@ public class TestInit {
 
     @PostConstruct
     public void saveComments() {
-        Item item = new Item();
-        item.setItemTitle("testItem");
-        item.setPrice(1000);
-        item.setContent("testContent");
-        itemRepository.save(item);
-
         Member member = new Member();
         member.setName("tis");
         memberRepository.save(member);
 
-        Comment comment = new Comment(item.getId(), member.getId(),"this content");
-        commentRepository.save(comment);
+        Item item = new Item();
+        item.setItemTitle("testItem");
+        item.setPrice(1000);
+        item.setContent("testContent");
+        item.setMember_id(member.getId());
+        itemRepository.save(item);
+
+        for (int i = 0; i < 10; i++) {
+            Comment comment = new Comment(member.getId(), item.getId(),"this content"+i);
+            commentRepository.save(comment);
+        }
     }
 }
