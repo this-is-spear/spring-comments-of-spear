@@ -1,5 +1,6 @@
 package happy.comments.springcomments.domain.comment;
 
+import happy.comments.springcomments.domain.Item;
 import happy.comments.springcomments.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,8 +29,13 @@ public class Comment implements CommentInterface{
     @Column(insertable = false, updatable = true)
     private LocalDateTime updateDate;
 
-    private Long member_id;
-    private Long item_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member comment_member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id")
+    private Item item;
     private String content;
 
     @Override
@@ -37,9 +43,9 @@ public class Comment implements CommentInterface{
         return this.content;
     }
 
-    public Comment(Long member_id, Long item_id, String content) {
-        this.member_id = member_id;
-        this.item_id = item_id;
+    public Comment(Member member, Item item, String content) {
+        this.comment_member = member;
+        this.item = item;
         this.content = content;
         this.createDate = LocalDateTime.now();
     }
@@ -54,7 +60,7 @@ public class Comment implements CommentInterface{
         this.updateDate = LocalDateTime.now();
     }
 
-    public boolean checkMember(Long member_id) {
-        return Objects.equals(this.member_id, member_id);
+    public boolean checkMember(Member member) {
+        return Objects.equals(this.comment_member.getId(), member.getId());
     }
 }

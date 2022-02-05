@@ -29,11 +29,11 @@ public class TestInit {
         item.setItemTitle("testItem");
         item.setPrice(1000);
         item.setContent("testContent");
-        item.setMember_id(member.getId());
+        item.setMember(member);
         itemRepository.save(item);
 
         for (int i = 0; i < 10; i++) {
-            Comment comment = new Comment(member.getId(), item.getId(),"this content"+i);
+            Comment comment = new Comment(member, item,"this content"+i);
             commentRepository.save(comment);
         }
     }

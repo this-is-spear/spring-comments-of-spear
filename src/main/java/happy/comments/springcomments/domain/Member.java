@@ -1,8 +1,10 @@
 package happy.comments.springcomments.domain;
 
+import happy.comments.springcomments.domain.comment.Comment;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +19,6 @@ public class Member {
 
     private String name;
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Item> itemList;
 }

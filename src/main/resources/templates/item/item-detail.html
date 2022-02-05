@@ -22,7 +22,7 @@
     댓글 작성하기
     댓글 내용
     <table>
-    <tr th:each="comment : ${comments}">
+    <tr th:each="comment : ${item.getComments()}">
         <td th:text="${comment.showContent()}"></td>
         <td></td>
     </tr>

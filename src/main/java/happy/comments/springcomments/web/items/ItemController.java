@@ -31,10 +31,7 @@ public class ItemController {
             return "redirect:/";
         }
         model.addAttribute("item", item);
-        memberRepository.findById(item.getMember_id()).ifPresent(member -> model.addAttribute("member", member));
-        List<Comment> comments = commentRepository.findByItem_id(itemId);
 
-        model.addAttribute("comments", comments);
         return "item/item-detail";
     }
 

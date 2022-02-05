@@ -16,7 +16,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     @Override
     Optional<Comment> findById(Long aLong);
 
-    @Query("select c from Comment c where c.item_id = ?1")
+    @Query("select c from Comment c where c.item.id = ?1")
     List<Comment> findByItem_id(Long item_id);
 
 }
